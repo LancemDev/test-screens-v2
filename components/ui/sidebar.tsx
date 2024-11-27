@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Calendar, BarChart2, MessageSquare, Share2, GitBranch } from 'lucide-react'
+import { ChatEmployee } from "./chat-employee"
 
 export function Sidebar() {
   return (
@@ -10,14 +11,11 @@ export function Sidebar() {
           <span className="font-bold text-xl text-white">Sauti</span>
         </Link>
       </div>
-      <nav className="p-4 space-y-2">
-        <Link
-          href="/chats"
-          className="flex items-center space-x-2 px-4 py-2 text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-800"
-        >
-          <MessageSquare className="h-5 w-5" />
-          <span>Chats</span>
-        </Link>
+      <div className="text-lg font-bold ml-7 mt-5">
+        <p>Chats</p>
+      </div>
+      <ChatEmployee />
+      <nav className="p-4 space-y-2 ">
         <Link
           href="/calendar"
           className="flex items-center space-x-2 px-4 py-2 text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-800"

@@ -15,11 +15,17 @@ export function ChatHeader() {
           <p className="text-sm text-zinc-400">The Retention Marketer</p>
         </div>
       </div>
-      <ToggleGroup type="single" defaultValue="auto">
-        <ToggleGroupItem value="auto" className="text-sm">
+      <ToggleGroup type="single" defaultValue="co" className="border border-zinc-800 rounded-full p-1">
+        <ToggleGroupItem 
+          value="auto" 
+          className="px-4 py-1.5 rounded-full text-sm data-[state=on]:bg-yellow-500 data-[state=on]:text-black text-zinc-400"
+        >
           Auto Pilot
         </ToggleGroupItem>
-        <ToggleGroupItem value="co" className="bg-yellow-500 text-black text-sm">
+        <ToggleGroupItem 
+          value="co" 
+          className="px-4 py-1.5 rounded-full text-sm data-[state=on]:bg-yellow-500 data-[state=on]:text-black text-zinc-400"
+        >
           Co-Pilot
         </ToggleGroupItem>
       </ToggleGroup>
