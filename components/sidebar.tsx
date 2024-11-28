@@ -1,10 +1,10 @@
 import Link from "next/link"
-import { Calendar, BarChart2, MessageSquare, Share2, GitBranch } from 'lucide-react'
+import { Calendar, BarChart2, Share2, GitBranch } from 'lucide-react'
 import { ChatEmployee } from "./chat-employee"
 
 export function Sidebar() {
   return (
-    <div className="fixed left-0 top-0 h-full w-64 bg-zinc-900 border-r border-zinc-800">
+    <div className="fixed left-0 top-0 h-full w-64 bg-zinc-900 border-r border-zinc-800 rounded-r-3xl">
       <div className="p-4 border-b border-zinc-800">
         <Link href="/" className="flex items-center space-x-2">
           <span className="text-yellow-500 text-2xl">◆</span>
@@ -45,6 +45,14 @@ export function Sidebar() {
           <span>Flows</span>
         </Link>
       </nav>
+      <div className="p-4 mt-auto border-t border-zinc-800">
+        <Link 
+          href="/feedback" 
+          className="text-sm text-zinc-400 hover:text-white"
+        >
+          Product feedback
+        </Link>
+      </div>
     </div>
   )
 }
