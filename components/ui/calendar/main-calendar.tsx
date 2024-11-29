@@ -7,7 +7,7 @@ import { format, isSameMonth, isSameDay, addMonths, subMonths, startOfMonth, end
 import { Modal } from "@/components/ui/modal"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
-import { Toast } from "@/components/ui/toast"
+import { Toast } from "@/components/ui/success-toast"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
