@@ -1,67 +1,70 @@
 "use client"
 
 import * as React from "react"
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { DayPicker } from "react-day-picker"
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
+import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, addMonths, subMonths } from 'date-fns'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { Button } from "@/components/ui/button"
 
-export type MiniCalendarProps = React.ComponentProps<typeof DayPicker>
+interface MiniCalendarProps {
+  className?: string
+  selectedDate: Date
+  onDateSelect: (date: Date) => void
+  viewDate: Date
+  onViewDateChange: (date: Date) => void
+}
 
-export function MiniCalendar({
-  className,
-  classNames,
-  showOutsideDays = true,
-  ...props
-}: MiniCalendarProps) {
+export function MiniCalendar({ className, selectedDate, onDateSelect, viewDate, onViewDateChange }: MiniCalendarProps) {
+  const monthStart = startOfMonth(viewDate)
+  const monthEnd = endOfMonth(viewDate)
+  const monthDays = eachDayOfInterval({ start: monthStart, end: monthEnd })
+
+  const goToPreviousMonth = () => {
+    onViewDateChange(subMonths(viewDate, 1))
+  }
+
+  const goToNextMonth = () => {
+    onViewDateChange(addMonths(viewDate, 1))
+  }
+
   return (
-    <DayPicker
-      showOutsideDays={showOutsideDays}
-      className={cn("p-3", className)}
-      classNames={{
-        months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
-        month: "space-y-4",
-        caption: "flex justify-between pt-1 relative items-center",
-        caption_label: "text-sm font-medium",
-        nav: "space-x-1 flex items-center",
-        nav_button: cn(
-          buttonVariants({ variant: "outline" }),
-          "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
-        ),
-        nav_button_previous: "absolute left-1",
-        nav_button_next: "absolute right-1",
-        table: "w-full border-collapse space-y-1",
-        head_row: "flex",
-        head_cell: "text-zinc-500 rounded-md w-8 font-normal text-[0.8rem] dark:text-zinc-400",
-        row: "flex w-full mt-2",
-        cell: cn(
-          "relative p-0 text-center text-sm focus-within:relative focus-within:z-20 [&:has([aria-selected])]:bg-zinc-800/50 rounded-md",
-          props.mode === "range"
-            ? "[&:has(>.day-range-end)]:rounded-r-md [&:has(>.day-range-start)]:rounded-l-md"
-            : ""
-        ),
-        day: cn(
-          buttonVariants({ variant: "ghost" }),
-          "h-8 w-8 p-0 font-normal aria-selected:opacity-100"
-        ),
-        day_range_start: "day-range-start",
-        day_range_end: "day-range-end",
-        day_selected:
-          "bg-yellow-500 text-black hover:bg-yellow-500 hover:text-black focus:bg-yellow-500 focus:text-black",
-        day_today: "bg-zinc-800 text-white",
-        day_outside: "text-zinc-500 opacity-50 dark:text-zinc-400",
-        day_disabled: "text-zinc-500 opacity-50 dark:text-zinc-400",
-        day_range_middle:
-          "aria-selected:bg-zinc-800/50 aria-selected:text-zinc-200",
-        day_hidden: "invisible",
-        ...classNames,
-      }}
-      // components={{
-      //   IconLeft: () => <ChevronLeft className="h-4 w-4" />,
-      //   IconRight: () => <ChevronRight className="h-4 w-4" />,
-      // }}
-      {...props}
-    />
+    <div className={cn("p-4 text-sm", className)}>
+      <div className="flex items-center justify-between mb-4">
+        <Button variant="ghost" size="sm" onClick={goToPreviousMonth}>
+          <ChevronLeft className="h-4 w-4" />
+        </Button>
+        <h3 className="text-white font-medium">{format(viewDate, 'MMMM yyyy')}</h3>
+        <Button variant="ghost" size="sm" onClick={goToNextMonth}>
+          <ChevronRight className="h-4 w-4" />
+        </Button>
+      </div>
+      <div className="grid grid-cols-7 text-center mb-2">
+        {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, index) => (
+          <div key={`weekday-${index}`} className="text-zinc-400 text-xs">
+            {day}
+          </div>
+        ))}
+      </div>
+      <div className="grid grid-cols-7 gap-y-2 text-center">
+        {monthDays.map((day) => {
+          const isSelected = isSameDay(day, selectedDate)
+          const isCurrentMonth = isSameMonth(day, viewDate)
+          return (
+            <button
+              key={day.toISOString()}
+              onClick={() => onDateSelect(day)}
+              className={cn(
+                "text-xs py-1 w-6 h-6 mx-auto flex items-center justify-center rounded-full",
+                isSelected ? "bg-yellow-500 text-black" : "text-zinc-400 hover:bg-zinc-800",
+                !isCurrentMonth && "opacity-30"
+              )}
+            >
+              {format(day, 'd')}
+            </button>
+          )
+        })}
+      </div>
+    </div>
   )
 }
 

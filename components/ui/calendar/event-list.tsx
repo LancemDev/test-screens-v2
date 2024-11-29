@@ -1,55 +1,54 @@
-export function EventList() {
-    const events = [
-      {
-        day: "Today",
-        items: [
-          { title: "Lead Product Launch", time: "09:00" },
-          { title: "Letter from the CEO", time: "09:00" },
-        ],
-      },
-      {
-        day: "Tomorrow",
-        items: [
-          { title: "Newsletter", time: "11:30" },
-          { title: "Weekly Blog", time: "14:30" },
-        ],
-      },
-      {
-        day: "Wednesday",
-        items: [
-          { title: "Launch Campaign", time: "13:00" },
-          { title: "Meet Our Digital Workers", time: "15:00" },
-        ],
-      },
-      {
-        day: "Thursday",
-        items: [
-          { title: "Investor Email", time: "11:30" },
-        ],
-      },
-    ]
-  
-    return (
-      <div className="space-y-6">
-        {events.map((group) => (
-          <div key={group.day}>
-            <h3 className="text-white font-medium mb-2">{group.day}</h3>
-            <div className="space-y-2">
-              {group.items.map((event) => (
-                <div
-                  key={event.title}
-                  className="flex items-center gap-2 text-sm"
-                >
-                  <span className="w-2 h-2 bg-yellow-500 rounded-full" />
-                  <span className="text-zinc-400">{event.title}</span>
-                  <span className="text-zinc-600 ml-auto">{event.time}</span>
-                </div>
-              ))}
+import { format, isSameDay, startOfDay, endOfDay, addDays } from 'date-fns'
+
+interface Event {
+  id: string
+  title: string
+  date: Date
+}
+
+interface EventListProps {
+  events: Event[]
+  selectedDate: Date
+}
+
+export function EventList({ events, selectedDate }: EventListProps) {
+  const today = startOfDay(selectedDate)
+  const tomorrow = addDays(today, 1)
+  const dayAfterTomorrow = addDays(today, 2)
+  const dayAfterDayAfterTomorrow = addDays(today, 3)
+
+  const groupedEvents = [
+    { day: "Today", events: events.filter(event => isSameDay(event.date, today)) },
+    { day: "Tomorrow", events: events.filter(event => isSameDay(event.date, tomorrow)) },
+    { day: format(dayAfterTomorrow, 'EEEE'), events: events.filter(event => isSameDay(event.date, dayAfterTomorrow)) },
+    { day: format(dayAfterDayAfterTomorrow, 'EEEE'), events: events.filter(event => isSameDay(event.date, dayAfterDayAfterTomorrow)) },
+  ]
+
+  return (
+    <div className="space-y-4">
+      {groupedEvents.map((group) => (
+        <div key={group.day}>
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-4 h-4 bg-zinc-800 rounded flex items-center justify-center">
+              <div className="w-2 h-2 bg-white rounded" />
             </div>
+            <h3 className="text-white text-sm">{group.day}</h3>
           </div>
-        ))}
-      </div>
-    )
-  }
-  
-  
+          <div className="space-y-2 pl-6">
+            {group.events.map((event) => (
+              <div
+                key={event.id}
+                className="flex items-center gap-2 text-sm"
+              >
+                <span className="w-1.5 h-1.5 bg-yellow-500 rounded-full" />
+                <span className="text-zinc-400">{event.title}</span>
+                <span className="text-zinc-600 ml-auto">{format(event.date, 'HH:mm')}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
