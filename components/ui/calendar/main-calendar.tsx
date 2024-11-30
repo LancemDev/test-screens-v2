@@ -96,7 +96,7 @@ export function MainCalendar({ selectedDate, onDateSelect, events, onAddEvent, v
           <Button variant="ghost" size="icon">
             <Search className="h-4 w-4" />
           </Button>
-          <Button className="bg-yellow-500 text-black hover:bg-yellow-600" onClick={() => setIsModalOpen(true)}>
+          <Button className="bg-sauti-yellow text-black hover:bg-sauti-yellow" onClick={() => setIsModalOpen(true)}>
             <Plus className="h-4 w-4 mr-2" />
             Create
           </Button>
@@ -145,7 +145,7 @@ export function MainCalendar({ selectedDate, onDateSelect, events, onAddEvent, v
           onChange={(e) => setNewEventTitle(e.target.value)}
           className="mb-4"
         />
-        <Button onClick={handleAddEvent} className="w-full bg-yellow-500 text-black hover:bg-yellow-600">
+        <Button onClick={handleAddEvent} className="w-full bg-sauti-yellow text-black hover:bg-yellow-600">
           Add Event
         </Button>
       </Modal>

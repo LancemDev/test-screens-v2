@@ -11,19 +11,19 @@ export function ChatHeader() {
           <AvatarFallback>O</AvatarFallback>
         </Avatar>
         <div>
-          <h2 className="text-lg font-semibold text-yellow-300">Oscar</h2>
+          <h2 className="text-lg font-semibold text-sauti-yellow">Oscar</h2>
         </div>
       </div>
       <ToggleGroup type="single" defaultValue="co" className="border border-zinc-800 rounded-full p-1 max-w-[80%]">
         <ToggleGroupItem 
           value="auto" 
-          className="px-4 py-1.5 rounded-full text-sm data-[state=on]:bg-yellow-300 data-[state=on]:text-black text-zinc-400"
+          className="px-4 py-1.5 rounded-full text-sm data-[state=on]:bg-sauti-yellow data-[state=on]:text-black text-zinc-400"
         >
           Auto Pilot
         </ToggleGroupItem>
         <ToggleGroupItem 
           value="co" 
-          className="px-4 py-1.5 rounded-full text-sm data-[state=on]:bg-yellow-300 data-[state=on]:text-black text-zinc-400"
+          className="px-4 py-1.5 rounded-full text-sm data-[state=on]:bg-sauti-yellow data-[state=on]:text-black text-zinc-400"
         >
           Co-Pilot
         </ToggleGroupItem>

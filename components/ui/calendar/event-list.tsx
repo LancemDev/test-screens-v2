@@ -40,7 +40,7 @@ export function EventList({ events, selectedDate }: EventListProps) {
                 key={event.id}
                 className="flex items-center gap-2 text-sm"
               >
-                <span className="w-1.5 h-1.5 bg-yellow-500 rounded-full" />
+                <span className="w-1.5 h-1.5 bg-sauti-yellow rounded-full" />
                 <span className="text-zinc-400">{event.title}</span>
                 <span className="text-zinc-600 ml-auto">{format(event.date, 'HH:mm')}</span>
               </div>

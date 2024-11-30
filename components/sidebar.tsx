@@ -8,12 +8,12 @@ export function Sidebar() {
     <div className="fixed left-0 top-0 h-full w-64 bg-zinc-900 border-r border-yellow-500 rounded-r-3xl">
       <div className="p-4">
       <Link href="/" className="flex items-center space-x-2">
-        <span className="text-yellow-500 text-2xl">
+        <span className="text-sauti-yellow text-2xl">
           <img src="/images/sauti-logo.png" alt="Sauti Logo" width="100" height="200" />
         </span>
       </Link>
       </div>
-      <div className="text-lg font-bold ml-7 mt-5">
+      <div className="text-lg text-zinc-100 font-bold ml-7 mt-5">
         <p>Chats</p>
       </div>
       <ChatEmployee />
@@ -55,7 +55,7 @@ export function Sidebar() {
         </div>
       </div>
       <div className="absolute bottom-0 left-0 w-full p-4">
-        <div className="bg-yellow-500 rounded-t-3xl rounded-b-none py-5 px-4 w-3/4 ml-0">
+        <div className="bg-sauti-yellow rounded-t-3xl rounded-b-none py-5 px-4 w-3/4 ml-0">
           <Link 
             href="/feedback" 
             className="block text-sm text-zinc-900 hover:text-white text-center"

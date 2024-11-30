@@ -9,8 +9,8 @@ export function ChatEmployee() {
           <AvatarFallback>O</AvatarFallback>
         </Avatar>
         <div className="flex flex-col items-center">
-          <h2 className="text-lg font-semibold text-yellow-500">Oscar</h2>
-          <p className="text-sm text-yellow-500">The Retention Marketer</p>
+          <h2 className="text-lg font-semibold text-sauti-yellow">Oscar</h2>
+          <p className="text-sm text-sauti-yellow">The Retention Marketer</p>
         </div>
       </div>
     </div>

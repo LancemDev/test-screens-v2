@@ -23,7 +23,7 @@ export default function DashboardLayout({
           {children}
         </main>
         <footer className="flex justify-between items-center p-4 border-t border-zinc-800">
-          <a href="#" className="text-yellow-500 hover:underline">Product feedback</a>
+          <a href="#" className="text-sauti-yellow hover:underline">Product feedback</a>
           <Avatar>
             <AvatarImage src="/user-avatar.jpg" alt="User" />
             <AvatarFallback>U</AvatarFallback>
