@@ -55,7 +55,7 @@ export function MiniCalendar({ className, selectedDate, onDateSelect, viewDate, 
               onClick={() => onDateSelect(day)}
               className={cn(
                 "text-xs py-1 w-6 h-6 mx-auto flex items-center justify-center rounded-full",
-                isSelected ? "bg-sauti-yellow text-black" : "text-zinc-400 hover:bg-zinc-800",
+                isSelected ? "bg-yellow-500 text-black" : "text-zinc-400 hover:bg-zinc-800",
                 !isCurrentMonth && "opacity-30"
               )}
             >

@@ -7,10 +7,10 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex h-screen bg-black">
+    <div className="flex bg-black">
       {/* <Sidebar /> */}
       <div className="flex-1 flex flex-col">
-        <header className="flex justify-between items-center p-4 border-b border-zinc-800">
+        {/* <header className="flex justify-between items-center p-4 border-b border-zinc-800">
           <div className="flex items-center space-x-4">
             <Avatar>
               <AvatarImage src="/oscar-avatar.jpg" alt="Oscar" />
@@ -18,17 +18,17 @@ export default function DashboardLayout({
             </Avatar>
             <span className="text-white font-semibold">Oscar</span>
           </div>
-        </header>
+        </header> */}
         <main className="flex-1 overflow-auto p-6">
           {children}
         </main>
-        <footer className="flex justify-between items-center p-4 border-t border-zinc-800">
-          <a href="#" className="text-sauti-yellow hover:underline">Product feedback</a>
+        {/* <footer className="flex justify-between items-center p-4 border-t border-zinc-800">
+          <a href="#" className="text-yellow-500 hover:underline">Product feedback</a>
           <Avatar>
             <AvatarImage src="/user-avatar.jpg" alt="User" />
             <AvatarFallback>U</AvatarFallback>
           </Avatar>
-        </footer>
+        </footer> */}
       </div>
     </div>
   )
