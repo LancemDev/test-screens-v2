@@ -19,7 +19,7 @@ export function Toast({ message, isVisible, onClose }: ToastProps) {
       leaveFrom="opacity-100"
       leaveTo="opacity-0"
     >
-      <div className="fixed top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-md shadow-lg flex items-center">
+      <div className="fixed top-4 right-4 bg-yellow-500 text-white px-4 py-2 rounded-md shadow-lg flex items-center">
         <span>{message}</span>
         <button onClick={onClose} className="ml-2">
           <X size={16} />

@@ -5,7 +5,7 @@ import { ChatInput } from "@/components/chat-input"
 
 export default function Home() {
   return (
-    <div className="flex h-screen absolute inset-0 bg-gradient-to-b from-black to-yellow-500 shadow-lg bg-zinc-950">
+    <div className="flex h-screen absolute inset-0 bg-gradient-to-b from-black to-yellow-300 shadow-lg bg-zinc-950">
       <Sidebar />
       <main className="flex-1 ml-64 flex flex-col ">
         <ChatHeader />
