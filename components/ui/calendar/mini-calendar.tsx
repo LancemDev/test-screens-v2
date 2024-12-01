@@ -31,11 +31,11 @@ export function MiniCalendar({ className, selectedDate, onDateSelect, viewDate, 
     <div className={cn("p-4 text-sm", className)}>
       <div className="flex items-center justify-between mb-4">
         <Button variant="ghost" size="sm" onClick={goToPreviousMonth}>
-          <ChevronLeft className="h-4 w-4" />
+          <ChevronLeft className="h-4 w-4 text-zinc-300" />
         </Button>
         <h3 className="text-white font-medium">{format(viewDate, 'MMMM yyyy')}</h3>
         <Button variant="ghost" size="sm" onClick={goToNextMonth}>
-          <ChevronRight className="h-4 w-4" />
+          <ChevronRight className="h-4 w-4 text-zinc-300" />
         </Button>
       </div>
       <div className="grid grid-cols-7 text-center mb-2">

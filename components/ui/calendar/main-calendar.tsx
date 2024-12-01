@@ -11,6 +11,7 @@ import { Toast } from "@/components/ui/success-toast"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 interface Event {
   id: string
@@ -64,10 +65,10 @@ export function MainCalendar({ selectedDate, onDateSelect, events, onAddEvent, v
       <div className="flex items-center justify-between p-4 border-b border-zinc-800">
         <div className="flex items-center gap-4">
           <Button variant="ghost" size="sm" onClick={goToPreviousMonth}>
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-4 w-4 text-zinc-300" />
           </Button>
           <Button variant="ghost" size="sm" onClick={goToNextMonth}>
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-4 w-4 text-zinc-300" />
           </Button>
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-white rounded-full" />
@@ -75,16 +76,16 @@ export function MainCalendar({ selectedDate, onDateSelect, events, onAddEvent, v
             <Select
               value={format(viewDate, 'MMMM')}
               onValueChange={(value) => {
-                const newDate = new Date(viewDate.getFullYear(), WEEKDAYS.indexOf(value), 1)
+                const newDate = new Date(viewDate.getFullYear(), MONTHS.indexOf(value), 1)
                 onViewDateChange(newDate)
               }}
             >
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className="w-[180px] text-zinc-300 rounded-full">
                 <SelectValue placeholder="Select month" />
               </SelectTrigger>
               <SelectContent>
                 {Array.from({ length: 12 }, (_, i) => new Date(0, i)).map((date) => (
-                  <SelectItem key={date.getMonth()} value={format(date, 'MMMM')}>
+                  <SelectItem key={date.getMonth()} value={format(date, 'MMMM')} className="text-zinc-300 hover:bg-yellow-600">
                     {format(date, 'MMMM')}
                   </SelectItem>
                 ))}
@@ -94,11 +95,11 @@ export function MainCalendar({ selectedDate, onDateSelect, events, onAddEvent, v
         </div>
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="icon">
-            <Search className="h-4 w-4" />
+            <Search className="h-4 w-4 text-white" />
           </Button>
-          <Button className="bg-yellow-500 text-black hover:bg-yellow-600" onClick={() => setIsModalOpen(true)}>
-            <Plus className="h-4 w-4 mr-2" />
+          <Button className="bg-sauti-yellow text-black hover:bg-yellow-600 rounded-full" onClick={() => setIsModalOpen(true)}>
             Create
+            <Plus className="h-4 w-4 mr-2" />
           </Button>
         </div>
       </div>
@@ -106,7 +107,7 @@ export function MainCalendar({ selectedDate, onDateSelect, events, onAddEvent, v
         {WEEKDAYS.map((day) => (
           <div
             key={day}
-            className="p-3 text-sm text-zinc-400 text-center border-r border-b border-yellow-500/20"
+            className="p-3 text-sm text-zinc-300 text-center border-r border-b border-yellow-500/20"
           >
             {day}
           </div>
@@ -125,12 +126,12 @@ export function MainCalendar({ selectedDate, onDateSelect, events, onAddEvent, v
               <span className={cn(
                 "text-sm",
                 isSameMonth(day, viewDate) ? "text-zinc-400" : "text-zinc-600",
-                isSameDay(day, selectedDate) && "text-yellow-500 font-bold"
+                isSameDay(day, selectedDate) && "text-sauti-yellow font-bold"
               )}>
                 {format(day, 'd')}
               </span>
               {dayEvents.map(event => (
-                <div key={event.id} className="mt-1 text-xs text-yellow-500 truncate">{event.title}</div>
+                <div key={event.id} className="mt-1 text-xs text-sauti-yellow truncate">{event.title}</div>
               ))}
             </div>
           )
@@ -143,9 +144,9 @@ export function MainCalendar({ selectedDate, onDateSelect, events, onAddEvent, v
           placeholder="Event Title"
           value={newEventTitle}
           onChange={(e) => setNewEventTitle(e.target.value)}
-          className="mb-4"
+          className="mb-4 rounded-full text-zinc-300"
         />
-        <Button onClick={handleAddEvent} className="w-full bg-yellow-500 text-black hover:bg-yellow-600">
+        <Button onClick={handleAddEvent} className="w-full bg-sauti-yellow text-black hover:bg-yellow-600 rounded-full">
           Add Event
         </Button>
       </Modal>

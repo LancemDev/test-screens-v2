@@ -18,6 +18,7 @@ module.exports = {
 	  extend: {
 		colors: {
 		  'sauti-yellow': '#FFD150',
+		  'sauti-yellow-dark': '#7A5A20',
 		  border: "hsl(var(--border))",
 		  input: "hsl(var(--input))",
 		  ring: "hsl(var(--ring))",
